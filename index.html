@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spell Duel — Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital@1&family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#080a14;
+    --panel:#11152488;
+    --panel-solid:#131829;
+    --line:#2a2f47;
+    --ink:#e7e6f2;
+    --muted:#9296b3;
+    --hand:#5fc3ff;
+    --fist:#b07bff;
+    --peace:#f0b84a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, #1a2447 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, #2a1a47 0%, transparent 55%),
+      var(--void);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  #page-ar{font-family:'Tajawal',system-ui,sans-serif;}
+  #page-ar h1, #page-ar .order-title{font-family:'Amiri','Tajawal',serif;}
+  #page-ar .eyebrow{font-family:'Amiri',serif;font-style:normal;}
+  #page-ar .order-desc{font-family:'Amiri',serif;font-style:normal;font-size:15px;}
+
+  /* language radios: visually hidden, but real, focusable, always-working inputs */
+  .lang-radio{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
+
+  /* default: English shown, Arabic hidden */
+  #page-ar{display:none;}
+  #lang-ar:checked ~ #page-ar{display:block;}
+  #lang-ar:checked ~ #page-en{display:none;}
+
+  /* ambient starfield */
+  .stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 70% 15%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 85% 60%, #cdd 100%, transparent),
+      radial-gradient(1px 1px at 40% 80%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 10% 65%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 55% 45%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 95% 35%, #fff 100%, transparent);
+    background-size:600px 600px;
+  }
+
+  .embers{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+  .ember{position:absolute;bottom:-20px;border-radius:50%;opacity:0;animation:rise linear infinite;}
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0);opacity:0;}
+    10%{opacity:.8;} 90%{opacity:.4;}
+    100%{transform:translateY(-115vh) translateX(var(--drift,20px));opacity:0;}
+  }
+
+  progress{position:fixed;top:0;inset-inline-start:0;width:100%;height:3px;z-index:50;
+    appearance:none;-webkit-appearance:none;border:none;background:transparent;}
+  progress::-webkit-progress-bar{background:transparent;}
+  progress::-webkit-progress-value{background:linear-gradient(90deg,var(--fist),var(--hand),var(--peace));box-shadow:0 0 12px #7fa8ffaa;}
+  progress::-moz-progress-bar{background:linear-gradient(90deg,var(--fist),var(--hand),var(--peace));}
+
+  .langbar{position:fixed;top:14px;inset-inline-end:16px;z-index:60;display:flex;gap:6px;
+    background:#11152499;backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:999px;padding:4px;}
+  .langbar label{
+    border:none;background:transparent;color:var(--muted);font-family:'Inter',sans-serif;
+    font-size:12.5px;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.2s;
+    font-weight:600;letter-spacing:.02em;display:inline-block;user-select:none;
+  }
+  #lang-en:checked ~ .langbar label[for="lang-en"],
+  #lang-ar:checked ~ .langbar label[for="lang-ar"]{
+    background:linear-gradient(120deg,var(--fist),var(--hand));color:#0a0d1a;
+  }
+
+  .hero-visual{position:relative;z-index:1;padding:96px 20px 0;text-align:center;}
+  .sigil-wrap{position:relative;width:200px;height:200px;margin:0 auto;}
+  .ring{position:absolute;inset:0;border-radius:50%;border:1px solid #4d5a8a55;}
+  .ring.r1{animation:spin 40s linear infinite;}
+  .ring.r2{inset:-22px;border-color:#6c4d9a44;animation:spin 55s linear infinite reverse;}
+  .ring.r3{inset:-44px;border-color:#3d6c9a33;animation:spin 70s linear infinite;border-style:dashed;}
+  .ring.r4{inset:-64px;border-color:transparent;}
+  .ring.r4::before,.ring.r4::after{content:'';position:absolute;width:5px;height:5px;border-radius:50%;background:var(--peace);box-shadow:0 0 10px var(--peace);}
+  .ring.r4::before{top:0;left:50%;animation:orbit 12s linear infinite;}
+  .ring.r4::after{top:0;left:50%;background:var(--fist);box-shadow:0 0 10px var(--fist);animation:orbit 12s linear infinite -6s;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @keyframes orbit{from{transform:rotate(0deg) translateX(132px) rotate(0deg);}to{transform:rotate(360deg) translateX(132px) rotate(-360deg);}}
+  .sigil-wrap img{position:relative;width:100%;height:100%;border-radius:28px;
+    box-shadow:0 0 60px -8px #6b8cffaa, 0 0 120px -20px #a06bffaa;
+    animation:breathe 5s ease-in-out infinite;}
+  @keyframes breathe{0%,100%{filter:brightness(1)}50%{filter:brightness(1.14)}}
+
+  header{position:relative;z-index:1;padding:30px 20px 70px;text-align:center;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.12em;color:var(--muted);font-size:15px;margin:0 0 10px;}
+  h1{font-family:'Cinzel',serif;font-weight:700;letter-spacing:.04em;font-size:clamp(30px,5.5vw,50px);margin:0 0 12px;
+    background:linear-gradient(120deg,#dfe4ff 20%,#c9b8ff 50%,#ffd98a 80%);background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s ease-in-out infinite;}
+  @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .subtitle{color:var(--muted);font-size:15px;margin:0;}
+  .subtitle b{color:#c9cdea;font-weight:500;}
+  .meta-strip{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:22px;color:var(--muted);font-size:12.5px;}
+  .meta-strip span b{color:#c9cdea;}
+  .meta-strip a{color:inherit;}
+
+  main{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:60px 20px 100px;}
+
+  .order{margin-bottom:56px;}
+  .order.reveal-init{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .order.reveal-init.in{opacity:1;transform:translateY(0);}
+  .order-head{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+  .order-glyph{width:46px;height:46px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+    border:1px solid currentColor;position:relative;}
+  .order-glyph::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid currentColor;opacity:.35;
+    animation:pulse-ring 3s ease-in-out infinite;}
+  @keyframes pulse-ring{0%,100%{transform:scale(1);opacity:.35;}50%{transform:scale(1.12);opacity:.05;}}
+  .order-glyph svg{width:20px;height:20px;}
+  .order-title{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 3px;}
+  .order-desc{color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;margin:0;}
+
+  .order.hand{color:var(--hand);}
+  .order.fist{color:var(--fist);}
+  .order.peace{color:var(--peace);}
+
+  details{background:var(--panel);backdrop-filter:blur(6px);border:1px solid var(--line);
+    border-inline-start:2px solid currentColor;border-radius:10px;margin:0 0 12px;padding:0;overflow:hidden;}
+  details[open]{background:var(--panel-solid);}
+  summary{cursor:pointer;list-style:none;padding:18px 20px;display:flex;align-items:center;
+    justify-content:space-between;gap:14px;color:#eceefb;font-weight:500;font-size:15.5px;}
+  summary::-webkit-details-marker{display:none;}
+  summary .num{font-family:'Cinzel',serif;font-size:11px;color:var(--muted);letter-spacing:.08em;margin-inline-end:12px;}
+  summary .chev{flex:none;width:18px;height:18px;color:var(--muted);transition:transform .25s;}
+  details[open] summary .chev{transform:rotate(45deg);color:currentColor;}
+  .body{padding:0 20px 20px 20px;color:var(--muted);font-size:14.5px;line-height:1.7;}
+  .body p{margin:0 0 12px;}
+  .body p:last-child{margin-bottom:0;}
+  .body strong{color:#d3d6f0;font-weight:600;}
+  .body ul{margin:10px 0 12px;padding-inline-start:20px;}
+  .body li{margin-bottom:6px;}
+  .contact-list{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:9px;}
+  .contact-list li{display:flex;align-items:center;gap:10px;color:#d3d6f0;}
+  .contact-list svg{width:16px;height:16px;flex:none;color:var(--peace);}
+  .contact-list a{color:#d3d6f0;text-decoration:none;}
+  .contact-list a:hover{color:var(--peace);}
+
+  footer{position:relative;z-index:1;text-align:center;padding:40px 20px 70px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);}
+  footer a{color:var(--hand);text-decoration:none;}
+
+  #top{position:fixed;inset-inline-end:20px;inset-block-end:20px;z-index:40;width:50px;height:50px;border-radius:50%;
+    background:var(--panel-solid);border:1px solid var(--line);color:#dfe1f5;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .25s, transform .2s, box-shadow .2s;}
+  #top.show{opacity:1;pointer-events:auto;}
+  #top:hover{box-shadow:0 0 22px -4px #7fa8ffaa;transform:translateY(-2px);}
+  #top svg{width:18px;height:18px;}
+
+  @media (prefers-reduced-motion:reduce){
+    .ring,.sigil-wrap img,h1,.ember,.order-glyph::after{animation:none!important;}
+    html{scroll-behavior:auto;}
+    .order.reveal-init{opacity:1;transform:none;transition:none;}
+  }
+
+  ::selection{background:#6b6bff55;}
+</style>
+</head>
+<body>
+
+<a id="topAnchor"></a>
+<input type="radio" id="lang-en" name="lang" class="lang-radio" checked>
+<input type="radio" id="lang-ar" name="lang" class="lang-radio">
+
+<div class="stars"></div>
+<div class="embers" id="embers"></div>
+<progress id="p" max="100" value="0"></progress>
+
+<div class="langbar">
+  <label for="lang-en">EN</label>
+  <label for="lang-ar">عربي</label>
+</div>
+
+<div class="hero-visual">
+  <div class="sigil-wrap">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="ring r4"></div>
+    <img src="data:image/webp;base64,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" alt="Spell Duel emblem">
+  </div>
+</div>
+
+<!-- ================= ENGLISH ================= -->
+<div id="page-en" lang="en">
+
+<header>
+  <p class="eyebrow">The Circle is Bound</p>
+  <h1>Spell Duel — Privacy Policy</h1>
+  <p class="subtitle">How the game handles what passes through your hand.</p>
+  <div class="meta-strip">
+    <span>Effective <b>July 2, 2026</b></span>
+    <span>Applies to <b>Spell Duel</b> (mobile)</span>
+    <span>Contact <b>younesbouzouita1@gmail.com</b></span>
+  </div>
+</header>
+
+<main>
+
+  <section class="order hand" data-order>
+    <div class="order-head">
+      <div class="order-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12V5a1.5 1.5 0 0 1 3 0v6M12 11V4a1.5 1.5 0 0 1 3 0v7M15 11.5V6a1.5 1.5 0 0 1 3 0v9c0 3.5-2 6.5-6 6.5s-6-2-7-4l-1.5-3a1.3 1.3 0 0 1 2-1.6L7 15"/></svg></div>
+      <div><p class="order-title">Order of the Open Hand</p><p class="order-desc">What we see, and what we don't</p></div>
+    </div>
+
+    <details open>
+      <summary><span><span class="num">1</span>Introduction</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Spell Duel is a gesture-cast duelling game — you raise a hand, the camera reads the shape, a spell is thrown. This policy explains, plainly, what that means for your privacy: what we look at, what we keep, and what never leaves your device.</p>
+        <p>We built the game to work without accounts, without a server tracking your matches, and without collecting anything about you beyond what's needed to play. If that changes, this page changes with it — see <strong>Changes to This Policy</strong> below.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">2</span>Information We Collect</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Spell Duel does not require a name, an email address, or an account to play. We do not collect personal information as part of normal gameplay.</p>
+        <p>The game stores a small amount of data locally on your device to make the game work:</p>
+        <ul><li>Your settings (sound, difficulty, chosen spell theme)</li><li>Your scores and match history, for your own stats screen</li><li>Whether you've completed the tutorial</li></ul>
+        <p>None of this is transmitted anywhere. It stays on your device until you delete the app or clear its data.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">3</span>Camera &amp; Gesture Recognition</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Spell Duel asks for camera access to recognize your hand gesture — fist, open palm, or two fingers — and translate it into a spell. This happens entirely <strong>on your device</strong>, in real time, frame by frame.</p>
+        <p>Camera frames are processed locally and are never saved, uploaded, or sent to us or anyone else. Nothing is recorded to your camera roll unless you explicitly use a separate screen-recording or screenshot feature of your own device.</p>
+        <p>You can deny or revoke camera access at any time in your device settings. Without it, the game falls back to on-screen tap controls so you can still play.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">4</span>Local Storage &amp; Game Data</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Game progress, settings, and statistics are saved to your device's local storage, not to a remote database. If you uninstall the app, this data is removed along with it.</p>
+        <p>If a future version adds optional cloud save or cross-device sync, it will be opt-in, clearly labeled, and covered by an update to this policy before it's turned on.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="order fist" data-order>
+    <div class="order-head">
+      <div class="order-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 12V9a1.5 1.5 0 0 1 3 0v3M9 12V7.5a1.5 1.5 0 0 1 3 0V12M12 12V8a1.5 1.5 0 0 1 3 0v4M15 12v-2a1.5 1.5 0 0 1 3 0v5c0 3.3-2 6-6 6s-6-2.5-6-6v-1"/></svg></div>
+      <div><p class="order-title">Order of the Closed Fist</p><p class="order-desc">How it's guarded</p></div>
+    </div>
+
+    <details>
+      <summary><span><span class="num">5</span>Data Sharing &amp; Third Parties</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>We do not sell your data. We do not have your data to sell — gameplay data lives on your device, not on our servers.</p>
+        <p>If Spell Duel ever integrates a third-party service (for example, a crash-reporting or analytics tool, or an ad network), that service and what it collects will be listed here by name before it ships, along with a way to opt out where one exists.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">6</span>Security</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Because gameplay data stays on-device, most of the risk of a remote breach simply doesn't apply — there's no central database of players' scores or settings to expose.</p>
+        <p>The app is distributed through official stores (APKPure, and any platform listing we publish to), which apply their own baseline integrity checks. We recommend downloading Spell Duel only from official sources to avoid modified or tampered builds.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">7</span>Children's Privacy</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Spell Duel is suitable for a general audience and does not knowingly collect personal information from children. Since the game requires no account and no personal information to play, there's nothing to submit in the first place.</p>
+        <p>If a parent or guardian believes a child has provided personal information through the app (for example, via a future feedback form), contact us using the details below and we'll remove it.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="order peace" data-order>
+    <div class="order-head">
+      <div class="order-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12V5a1.5 1.5 0 0 1 3 0v6M14 11.5V5a1.5 1.5 0 0 1 3 0v9.5c0 3.5-2 6.5-6 6.5s-6-2-7-4l-1.2-2.4a1.3 1.3 0 0 1 2-1.6L7 15"/></svg></div>
+      <div><p class="order-title">Order of Balance</p><p class="order-desc">What's yours to decide</p></div>
+    </div>
+
+    <details>
+      <summary><span><span class="num">8</span>Your Rights &amp; Choices</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Since your gameplay data lives on your device, you're already in control of it:</p>
+        <ul><li><strong>View it</strong> — it's the stats and settings screens inside the game</li><li><strong>Reset it</strong> — clear the app's storage or reinstall it from your device settings</li><li><strong>Revoke camera access</strong> — at any time, from your device's permission settings</li><li><strong>Delete it entirely</strong> — uninstalling the app removes all locally stored data</li></ul>
+        <p>If a future version does collect any information on a server, this section will be updated to explain how to access, export, or delete it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">9</span>Changes to This Policy</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>If Spell Duel's data practices change — a new feature, a new integration, an optional cloud save — this policy will be updated first, with a new effective date at the top of the page.</p>
+        <p>We won't quietly expand what's collected without reflecting it here.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">10</span>Contact</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Questions, concerns, or a request related to your data can be sent through any of the following:</p>
+        <ul class="contact-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:younesbouzouita1@gmail.com">younesbouzouita1@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 4 6a2 2 0 0 1 2-2z"/></svg><a href="tel:+21656455064">+216 56 455 064</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg><a href="https://instagram.com/ys._.bt" target="_blank" rel="noopener">@ys._.bt</a></li>
+        </ul>
+        <p>Spell Duel is developed by YOS Studio.</p>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<footer>© 2026 YOS Studio · Spell Duel · <a href="mailto:younesbouzouita1@gmail.com">younesbouzouita1@gmail.com</a></footer>
+
+</div>
+<!-- ================= /ENGLISH ================= -->
+
+<!-- ================= ARABIC ================= -->
+<div id="page-ar" lang="ar" dir="rtl">
+
+<header>
+  <p class="eyebrow">الدائرة موصدة</p>
+  <h1>Spell Duel — سياسة الخصوصية</h1>
+  <p class="subtitle">كيف تتعامل اللعبة مع ما يمر عبر يدك.</p>
+  <div class="meta-strip">
+    <span>سارية المفعول من <b>2 يوليو 2026</b></span>
+    <span>تخص تطبيق <b>Spell Duel</b> (للهاتف المحمول)</span>
+    <span>للتواصل: <b>younesbouzouita1@gmail.com</b></span>
+  </div>
+</header>
+
+<main>
+
+  <section class="order hand" data-order>
+    <div class="order-head">
+      <div class="order-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12V5a1.5 1.5 0 0 1 3 0v6M12 11V4a1.5 1.5 0 0 1 3 0v7M15 11.5V6a1.5 1.5 0 0 1 3 0v9c0 3.5-2 6.5-6 6.5s-6-2-7-4l-1.5-3a1.3 1.3 0 0 1 2-1.6L7 15"/></svg></div>
+      <div><p class="order-title">نظام اليد المفتوحة</p><p class="order-desc">ما نراه، وما لا نراه</p></div>
+    </div>
+
+    <details open>
+      <summary><span><span class="num">1</span>مقدمة</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Spell Duel هي لعبة مبارزة بالإيماءات — ترفع يدك، تقرأ الكاميرا شكلها، وتُلقى التعويذة. توضح هذه السياسة بكل بساطة معنى ذلك بالنسبة لخصوصيتك: ما الذي ننظر إليه، وما الذي نحتفظ به، وما الذي لا يغادر جهازك أبدًا.</p>
+        <p>صممنا اللعبة لتعمل دون حسابات، دون خادم يتتبع مبارياتك، ودون جمع أي شيء عنك يتجاوز ما تحتاجه اللعبة لتعمل. وإذا تغيّر ذلك، ستتغيّر هذه الصفحة معه — انظر قسم <strong>التعديلات على هذه السياسة</strong> أدناه.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">2</span>المعلومات التي نجمعها</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>لا تتطلب Spell Duel اسمًا أو بريدًا إلكترونيًا أو حسابًا للعب. نحن لا نجمع معلومات شخصية كجزء من اللعب العادي.</p>
+        <p>تخزّن اللعبة كمية صغيرة من البيانات محليًا على جهازك لتعمل بشكل صحيح:</p>
+        <ul><li>إعداداتك (الصوت، مستوى الصعوبة، طابع التعويذات المختار)</li><li>نتائجك وسجل مبارياتك، لشاشة إحصائياتك الخاصة</li><li>ما إذا كنت قد أكملت الشرح التمهيدي</li></ul>
+        <p>لا يُرسل أي من هذا إلى أي مكان. يبقى على جهازك حتى تحذف التطبيق أو تمسح بياناته.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">3</span>الكاميرا والتعرف على الإيماءات</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>تطلب Spell Duel إذن الوصول إلى الكاميرا للتعرف على إيماءة يدك — قبضة، كف مفتوح، أو إصبعان — وترجمتها إلى تعويذة. يحدث هذا بالكامل <strong>على جهازك</strong>، في الوقت الفعلي، لقطة تلو الأخرى.</p>
+        <p>تُعالَج لقطات الكاميرا محليًا ولا تُحفظ أو تُرفع أو تُرسل إلينا أو لأي جهة أخرى أبدًا. لا يُسجَّل شيء في مكتبة الصور لديك ما لم تستخدم بنفسك ميزة تسجيل الشاشة أو لقطة الشاشة الخاصة بجهازك.</p>
+        <p>يمكنك رفض إذن الكاميرا أو إلغاؤه في أي وقت من إعدادات جهازك. وبدونه، تنتقل اللعبة تلقائيًا إلى أزرار تحكم على الشاشة حتى تتمكن من الاستمرار في اللعب.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">4</span>التخزين المحلي وبيانات اللعبة</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>يُحفظ تقدمك وإعداداتك وإحصائياتك في التخزين المحلي لجهازك، وليس في قاعدة بيانات بعيدة. إذا قمت بإلغاء تثبيت التطبيق، تُحذف هذه البيانات معه.</p>
+        <p>إذا أضافت نسخة مستقبلية حفظًا سحابيًا اختياريًا أو مزامنة بين الأجهزة، فسيكون ذلك بموافقتك الصريحة، موضّحًا بشكل واضح، ومشمولًا بتحديث لهذه السياسة قبل تفعيله.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="order fist" data-order>
+    <div class="order-head">
+      <div class="order-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 12V9a1.5 1.5 0 0 1 3 0v3M9 12V7.5a1.5 1.5 0 0 1 3 0V12M12 12V8a1.5 1.5 0 0 1 3 0v4M15 12v-2a1.5 1.5 0 0 1 3 0v5c0 3.3-2 6-6 6s-6-2.5-6-6v-1"/></svg></div>
+      <div><p class="order-title">نظام القبضة المغلقة</p><p class="order-desc">كيف تتم حمايتها</p></div>
+    </div>
+
+    <details>
+      <summary><span><span class="num">5</span>مشاركة البيانات مع أطراف أخرى</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>نحن لا نبيع بياناتك. ولا نملك بيانات لنبيعها أصلًا — بيانات اللعب تبقى على جهازك، وليس على خوادمنا.</p>
+        <p>إذا أضافت Spell Duel يومًا خدمة من طرف ثالث (مثل أداة لتتبع الأعطال أو التحليلات، أو شبكة إعلانات)، فسيتم ذكر تلك الخدمة وما تجمعه هنا بالاسم قبل إطلاقها، مع طريقة لإلغاء الاشتراك إن وُجدت.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">6</span>الأمان</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>بما أن بيانات اللعب تبقى على الجهاز، فإن معظم مخاطر الاختراق عن بُعد لا تنطبق أساسًا — فلا توجد قاعدة بيانات مركزية لنتائج اللاعبين أو إعداداتهم يمكن اختراقها.</p>
+        <p>يُوزَّع التطبيق عبر متاجر رسمية (APKPure، وأي منصة أخرى ننشر عليها)، وهذه المتاجر تطبق فحوصات سلامة أساسية خاصة بها. ننصح بتحميل Spell Duel من مصادر رسمية فقط لتجنب النسخ المعدَّلة أو المتلاعب بها.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">7</span>خصوصية الأطفال</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>Spell Duel مناسبة لجمهور عام ولا تجمع عن قصد معلومات شخصية من الأطفال. وبما أن اللعبة لا تتطلب حسابًا ولا معلومات شخصية للعب، فلا يوجد أصلًا ما يمكن إرساله.</p>
+        <p>إذا اعتقد أحد الوالدين أو الأوصياء أن طفلًا قدّم معلومات شخصية عبر التطبيق (مثلًا عبر نموذج ملاحظات مستقبلي)، يرجى التواصل معنا عبر البيانات أدناه وسنقوم بإزالتها.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="order peace" data-order>
+    <div class="order-head">
+      <div class="order-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12V5a1.5 1.5 0 0 1 3 0v6M14 11.5V5a1.5 1.5 0 0 1 3 0v9.5c0 3.5-2 6.5-6 6.5s-6-2-7-4l-1.2-2.4a1.3 1.3 0 0 1 2-1.6L7 15"/></svg></div>
+      <div><p class="order-title">نظام التوازن</p><p class="order-desc">ما يعود لك القرار فيه</p></div>
+    </div>
+
+    <details>
+      <summary><span><span class="num">8</span>حقوقك وخياراتك</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>بما أن بيانات لعبك موجودة على جهازك، فأنت أصلًا من يتحكم بها:</p>
+        <ul><li><strong>الاطلاع عليها</strong> — من خلال شاشتي الإحصائيات والإعدادات داخل اللعبة</li><li><strong>إعادة ضبطها</strong> — بمسح تخزين التطبيق أو إعادة تثبيته من إعدادات جهازك</li><li><strong>إلغاء إذن الكاميرا</strong> — في أي وقت، من إعدادات الأذونات في جهازك</li><li><strong>حذفها بالكامل</strong> — إلغاء تثبيت التطبيق يزيل كل البيانات المخزّنة محليًا</li></ul>
+        <p>إذا جمعت نسخة مستقبلية أي معلومات على خادم، سيُحدَّث هذا القسم لتوضيح كيفية الوصول إليها أو تصديرها أو حذفها.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">9</span>التعديلات على هذه السياسة</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>إذا تغيّرت ممارسات Spell Duel في التعامل مع البيانات — ميزة جديدة، تكامل جديد، حفظ سحابي اختياري — فسيتم تحديث هذه السياسة أولًا، مع تاريخ سريان جديد أعلى الصفحة.</p>
+        <p>لن نوسّع نطاق ما يُجمع بصمت دون أن ينعكس ذلك هنا.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="num">10</span>التواصل</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="body">
+        <p>يمكن إرسال أي سؤال أو استفسار أو طلب متعلق ببياناتك عبر إحدى الوسائل التالية:</p>
+        <ul class="contact-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:younesbouzouita1@gmail.com" dir="ltr">younesbouzouita1@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 4 6a2 2 0 0 1 2-2z"/></svg><a href="tel:+21656455064" dir="ltr">+216 56 455 064</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg><a href="https://instagram.com/ys._.bt" target="_blank" rel="noopener" dir="ltr">@ys._.bt</a></li>
+        </ul>
+        <p>لعبة Spell Duel من تطوير YOS Studio.</p>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<footer>© 2026 YOS Studio · Spell Duel · <a href="mailto:younesbouzouita1@gmail.com">younesbouzouita1@gmail.com</a></footer>
+
+</div>
+<!-- ================= /ARABIC ================= -->
+
+<a id="top" href="#topAnchor" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</a>
+
+<script>
+// Everything below is a progressive enhancement only.
+// All content, the language switch, and the accordions above
+// already work with zero JavaScript.
+try {
+  var p = document.getElementById('p');
+  var top = document.getElementById('top');
+  addEventListener('scroll', function() {
+    var h = document.documentElement;
+    var v = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    p.value = v || 0;
+    top.classList.toggle('show', h.scrollTop > 400);
+  }, {passive:true});
+
+  document.querySelectorAll('[data-order]').forEach(function(order){
+    var items = order.querySelectorAll('details');
+    items.forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if (d.open) items.forEach(function(o){ if (o !== d) o.open = false; });
+      });
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{threshold:.15});
+    document.querySelectorAll('[data-order]').forEach(function(el){
+      el.classList.add('reveal-init');
+      var r = el.getBoundingClientRect();
+      if (r.top < innerHeight && r.bottom > 0) {
+        requestAnimationFrame(function(){ el.classList.add('in'); });
+      } else {
+        io.observe(el);
+      }
+    });
+  }
+
+  var emberColors = ['#5fc3ff','#b07bff','#f0b84a'];
+  var emberHost = document.getElementById('embers');
+  for(var i=0;i<22;i++){
+    var e = document.createElement('div');
+    e.className='ember';
+    var size = 2 + Math.random()*3;
+    e.style.width = size+'px';
+    e.style.height = size+'px';
+    e.style.left = Math.random()*100+'vw';
+    e.style.background = emberColors[i % emberColors.length];
+    e.style.boxShadow = '0 0 8px '+emberColors[i % emberColors.length];
+    e.style.setProperty('--drift', (Math.random()*80-40)+'px');
+    e.style.animationDuration = (14 + Math.random()*14)+'s';
+    e.style.animationDelay = (Math.random()*20)+'s';
+    emberHost.appendChild(e);
+  }
+} catch(e) { /* enhancement only — content already works without it */ }
+</script>
+
+</body>
+</html>
